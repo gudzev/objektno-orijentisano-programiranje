@@ -1,6 +1,6 @@
 package src;
 
-public class Kvadrat extends Oblik implements IStranica
+public class Kvadrat extends Oblik implements IIspisDetaljaOblika
 {
     private double a;
 
@@ -35,7 +35,7 @@ public class Kvadrat extends Oblik implements IStranica
     {
         if(a <= 0)
         {
-            System.out.println("Stranica a nema validnu vrednost. Oblik nije ispravan");
+            System.out.println("Stranica a nema validnu vrednost (> 0).");
             return false;
         }
         else
@@ -45,8 +45,32 @@ public class Kvadrat extends Oblik implements IStranica
 
     }
 
-    public double[] vratiStranice()
+    @Override
+    public void ispisiObim()
     {
-        return new double[] { a };
+        if(obim() > 0)
+            System.out.println("Obim kvadrata je " + obim());
+    }
+
+    @Override
+    public void ispisiPovrsinu()
+    {
+        if(povrsina() > 0)
+            System.out.println("Povrsina kvadrata je " + povrsina());
+    }
+
+    public double vratiStranicu()
+    {
+        if(jeIspravan())
+            return a;
+        return -1;
+    }
+
+    public void postaviStranice(double a)
+    {
+        if(a > 0)
+            this.a = a;
+        else
+            System.out.println("Greska! Stranica mora biti veca od 0.");
     }
 }
