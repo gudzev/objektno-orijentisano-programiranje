@@ -2,16 +2,22 @@ package src;
 
 public class Krug extends Oblik implements IIspisDetaljaOblika
 {
+    private static int brojKruga;
+
     private double r;
 
     public Krug()
     {
-
+        r = 0;
+        ID = "Krug#" + brojKruga;
+        brojKruga++;
     }
 
     public Krug(double r)
     {
         this.r = r;
+        ID = "Krug#" + brojKruga;
+        brojKruga++;
     }
 
     public boolean jeIspravan()

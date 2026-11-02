@@ -2,16 +2,22 @@ package src;
 
 public class Kvadrat extends Oblik implements IIspisDetaljaOblika
 {
+    private static int brojKvadrata;
+
     private double a;
 
     public Kvadrat()
     {
         a = 0;
+        ID = "Kvadrat#" + brojKvadrata;
+        brojKvadrata++;
     }
 
     public Kvadrat(double a)
     {
         this.a = a;
+        ID = "Kvadrat#" + brojKvadrata;
+        brojKvadrata++;
     }
 
     @Override
