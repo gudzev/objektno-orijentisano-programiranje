@@ -13,7 +13,7 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
         a = 0;
         b = 0;
         c = 0;
-        ID = "Trougao#" + brojTrouglova;
+        postaviID("Trougao#" + brojTrouglova);
         brojTrouglova++;
     }
 
@@ -22,14 +22,19 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
         this.a = a;
         this.b = b;
         this.c = c;
-        ID = "Trougao#" + brojTrouglova;
+        postaviID("Trougao#" + brojTrouglova);
         brojTrouglova++;
+    }
+
+    public static boolean jeIspravan(double a, double b, double c)
+    {
+        return a + b > c && a + c > b && b + c > a && a > 0 && b > 0 && c > 0;
     }
 
     @Override
     public boolean jeIspravan()
     {
-        return a + b > c && a + c > b && b + c > a && a > 0 && b > 0 && c > 0;
+        return jeIspravan(a, b, c);
     }
 
     @Override
@@ -60,7 +65,7 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
         double povrsina = povrsina();
 
         if(povrsina > 0)
-            System.out.println("Povrsina trougla je " + povrsina());
+            System.out.println("Povrsina trougla je " + povrsina);
     }
 
     @Override
@@ -69,7 +74,7 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
         double obim = obim();
 
         if(obim > 0)
-            System.out.println("Obim trougla je " + obim());
+            System.out.println("Obim trougla je " + obim);
     }
 
     public double[] vratiStranice()
@@ -79,13 +84,9 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
 
     public void postaviStranice(double a, double b, double c)
     {
-        if(a <= 0 || b <= 0 || c <= 0)
+        if(!jeIspravan(a, b, c))
         {
-            System.out.println("Unete stranice trougla ne smeju biti < 0");
-        }
-        else if(a + b <= c || a + c <= b || c + b <= a)
-        {
-            System.out.println("Unete stranice ne mogu formirati trougao.");
+            System.out.println("Unete stranice trougla nisu validne.");
         }
         else
         {

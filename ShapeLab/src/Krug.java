@@ -9,19 +9,18 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
     public Krug()
     {
         r = 0;
-        ID = "Krug#" + brojKruga;
+        postaviID("Krug#" + brojKruga);
         brojKruga++;
     }
 
     public Krug(double r)
     {
         this.r = r;
-        ID = "Krug#" + brojKruga;
+        postaviID("Krug#" + brojKruga);
         brojKruga++;
     }
 
-    @Override
-    public boolean jeIspravan()
+    public static boolean jeIspravan(double r)
     {
         if(r > 0)
         {
@@ -32,6 +31,12 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
             System.out.println("Uneti poluprecnik nije ispravan (mora biti > 0).");
             return false;
         }
+    }
+
+    @Override
+    public boolean jeIspravan()
+    {
+        return jeIspravan(r);
     }
 
     @Override
@@ -56,7 +61,7 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
         double povrsina = povrsina();
 
         if(povrsina > 0)
-            System.out.println("Povrsina kruga je " + povrsina());
+            System.out.println("Povrsina kruga je " + povrsina);
     }
 
     @Override
@@ -66,7 +71,7 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
 
         if(obim > 0)
         {
-            System.out.println("Obim kruga je " + obim());
+            System.out.println("Obim kruga je " + obim);
         }
     }
 
@@ -77,8 +82,12 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
 
     public void postaviPoluprecnik(double r)
     {
-        if(jeIspravan())
-            this.r = r;
-        System.out.println("Greska! Poluprecnik mora biti veci od 0.");
+        if(!jeIspravan(r))
+        {
+            System.out.println("Greska! Poluprecnik mora biti veci od 0.");
+            return;
+        }
+
+        this.r = r;
     }
 }

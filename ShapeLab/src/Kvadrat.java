@@ -9,14 +9,14 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
     public Kvadrat()
     {
         a = 0;
-        ID = "Kvadrat#" + brojKvadrata;
+        postaviID("Kvadrat#" + brojKvadrata);
         brojKvadrata++;
     }
 
     public Kvadrat(double a)
     {
         this.a = a;
-        ID = "Kvadrat#" + brojKvadrata;
+        postaviID("Kvadrat#" + brojKvadrata);
         brojKvadrata++;
     }
 
@@ -36,8 +36,7 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
         return 4 * a;
     }
 
-    @Override
-    public boolean jeIspravan()
+    public static boolean jeIspravan(double a)
     {
         if(a <= 0)
         {
@@ -48,7 +47,12 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
         {
             return true;
         }
+    }
 
+    @Override
+    public boolean jeIspravan()
+    {
+        return jeIspravan(a);
     }
 
     @Override
@@ -56,7 +60,7 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
     {
         double obim = obim();
         if(obim > 0)
-            System.out.println("Obim kvadrata je " + obim());
+            System.out.println("Obim kvadrata je " + obim);
     }
 
     @Override
@@ -64,7 +68,7 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
     {
         double povrsina = povrsina();
         if(povrsina > 0)
-            System.out.println("Povrsina kvadrata je " + povrsina());
+            System.out.println("Povrsina kvadrata je " + povrsina);
     }
 
     public double vratiStranicu()
@@ -74,7 +78,7 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
 
     public void postaviStranice(double a)
     {
-        if(a > 0)
+        if(jeIspravan(a))
             this.a = a;
         else
             System.out.println("Greska! Stranica mora biti veca od 0.");

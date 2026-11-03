@@ -2,7 +2,17 @@ package src;
 
 public abstract class Oblik
 {
-    protected String ID;
+    private String ID;
+
+    protected String vratiID()
+    {
+        return ID;
+    }
+
+    protected void postaviID(String ID)
+    {
+        this.ID = ID;
+    }
 
     public abstract double povrsina();
 

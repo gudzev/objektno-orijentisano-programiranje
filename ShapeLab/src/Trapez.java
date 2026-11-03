@@ -15,7 +15,7 @@ public class Trapez extends Oblik implements IIspisDetaljaOblika
         b = 0;
         c = 0;
         d = 0;
-        ID = "Trapez#" + brojTrapeza;
+        postaviID("Trapez#" + brojTrapeza);
         brojTrapeza++;
     }
 
@@ -25,11 +25,11 @@ public class Trapez extends Oblik implements IIspisDetaljaOblika
         this.b = b;
         this.c = c;
         this.d = d;
-        ID = "Trapez#" + brojTrapeza;
+        postaviID("Trapez#" + brojTrapeza);
         brojTrapeza++;
     }
 
-    public boolean jeIspravan(double a, double b, double c, double d)
+    public static boolean jeIspravan(double a, double b, double c, double d)
     {
         if(Math.abs(b - d) < Math.abs(a - c) && Math.abs(a - c) < (b + d) && a > 0 && b > 0 && c > 0 && d > 0)
         {
@@ -66,19 +66,21 @@ public class Trapez extends Oblik implements IIspisDetaljaOblika
         return a + b + c + d;
     }
 
+    @Override
     public void ispisiPovrsinu()
     {
         double povrsina = povrsina();
         if(povrsina > 0)
-            System.out.println("Povrsina trapeza je " + povrsina());
+            System.out.println("Povrsina trapeza je " + povrsina);
     }
 
+    @Override
     public void ispisiObim()
     {
         double obim = obim();
         if(obim > 0)
         {
-            System.out.println("Obim trapeza je " + obim());
+            System.out.println("Obim trapeza je " + obim);
         }
     }
 
@@ -87,10 +89,6 @@ public class Trapez extends Oblik implements IIspisDetaljaOblika
         if(!jeIspravan(a, b, c, d))
         {
             System.out.println("Unete stranice trapeza nisu ispravne.");
-        }
-        else if(a <= 0 || b <= 0 || c <= 0 || d <= 0)
-        {
-            System.out.println("Unete stranice nisu pozitivne.");
         }
         else
         {
