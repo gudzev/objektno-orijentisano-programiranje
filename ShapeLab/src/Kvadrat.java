@@ -54,14 +54,16 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
     @Override
     public void ispisiObim()
     {
-        if(obim() > 0)
+        double obim = obim();
+        if(obim > 0)
             System.out.println("Obim kvadrata je " + obim());
     }
 
     @Override
     public void ispisiPovrsinu()
     {
-        if(povrsina() > 0)
+        double povrsina = povrsina();
+        if(povrsina > 0)
             System.out.println("Povrsina kvadrata je " + povrsina());
     }
 

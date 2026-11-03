@@ -20,6 +20,7 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
         brojKruga++;
     }
 
+    @Override
     public boolean jeIspravan()
     {
         if(r > 0)
@@ -52,14 +53,18 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
     @Override
     public void ispisiPovrsinu()
     {
-        if(povrsina() > 0)
+        double povrsina = povrsina();
+
+        if(povrsina > 0)
             System.out.println("Povrsina kruga je " + povrsina());
     }
 
     @Override
     public void ispisiObim()
     {
-        if(obim() > 0)
+        double obim = obim();
+
+        if(obim > 0)
         {
             System.out.println("Obim kruga je " + obim());
         }

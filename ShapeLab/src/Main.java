@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main
 {
-    ArrayList<Oblik> listaOblika = new ArrayList<Oblik>();
+    private ArrayList<Oblik> listaOblika = new ArrayList<Oblik>();
 
     public void main(String[] args)
     {
@@ -21,6 +21,7 @@ public class Main
             System.out.println(o.ID);
             System.out.println("Obim je " + o.obim());
             System.out.println("Povrsina je " + o.povrsina());
+            System.out.println("----------------------------------------");
         }
     }
 }

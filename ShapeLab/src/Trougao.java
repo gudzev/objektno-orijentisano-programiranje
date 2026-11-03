@@ -26,6 +26,7 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
         brojTrouglova++;
     }
 
+    @Override
     public boolean jeIspravan()
     {
         return a + b > c && a + c > b && b + c > a && a > 0 && b > 0 && c > 0;
@@ -56,14 +57,18 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
     @Override
     public void ispisiPovrsinu()
     {
-        if(povrsina() > 0)
+        double povrsina = povrsina();
+
+        if(povrsina > 0)
             System.out.println("Povrsina trougla je " + povrsina());
     }
 
     @Override
     public void ispisiObim()
     {
-        if(obim() > 0)
+        double obim = obim();
+
+        if(obim > 0)
             System.out.println("Obim trougla je " + obim());
     }
 
