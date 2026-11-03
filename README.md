@@ -1,1 +1,10 @@
-# objektno-orijentisano-programiranje
+\# ShapeLab
+
+
+
+\## Kratak opis projekta
+
+
+
+\## Pokretanje programa
+

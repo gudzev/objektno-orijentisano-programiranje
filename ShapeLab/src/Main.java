@@ -9,9 +9,11 @@ public class Main
     public void main(String[] args)
     {
         Kvadrat k = new Kvadrat(3);
+        Kvadrat k2 = new Kvadrat(3);
         Krug _k = new Krug(5);
 
         listaOblika.add(k);
+        listaOblika.add(k2);
         listaOblika.add(_k);
 
         for(Oblik o : listaOblika)

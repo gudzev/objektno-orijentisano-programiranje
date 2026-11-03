@@ -2,7 +2,7 @@ package src;
 
 public class Kvadrat extends Oblik implements IIspisDetaljaOblika
 {
-    private static int brojKvadrata;
+    private static int brojKvadrata = 0;
 
     private double a;
 
@@ -67,9 +67,7 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
 
     public double vratiStranicu()
     {
-        if(jeIspravan())
-            return a;
-        return -1;
+        return a;
     }
 
     public void postaviStranice(double a)

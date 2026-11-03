@@ -2,7 +2,7 @@ package src;
 
 public class Krug extends Oblik implements IIspisDetaljaOblika
 {
-    private static int brojKruga;
+    private static int brojKruga = 0;
 
     private double r;
 
@@ -67,9 +67,7 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
 
     public double vratiPoluprecnik()
     {
-        if(jeIspravan())
-            return r;
-        return -1;
+        return r;
     }
 
     public void postaviPoluprecnik(double r)
