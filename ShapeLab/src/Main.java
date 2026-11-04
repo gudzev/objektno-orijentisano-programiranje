@@ -25,15 +25,18 @@ public class Main
                     ispisiDetaljeSvihOblika();
                     break;
                 case 3:
-                    obrisiOblik();
+                    izmeniOblik();
                     break;
                 case 4:
+                    obrisiOblik();
+                    break;
+                case 5:
                     break;
                 default:
                     System.out.println("Uneta opcija ne postoji.");
             }
         }
-        while(opcija != 4);
+        while(opcija != 5);
     }
 
     private int ispisiMeni()
@@ -44,8 +47,9 @@ public class Main
         System.out.println("Unesi:");
         System.out.println("1. Za unos geometrijskog oblika");
         System.out.println("2. Za detaljan ispis svih geometrijskih oblika");
-        System.out.println("3. Za brisanje geometrijskog oblika");
-        System.out.println("4. Za kraj programa");
+        System.out.println("3. Za izmenu geometrijskog oblika");
+        System.out.println("4. Za brisanje geometrijskog oblika");
+        System.out.println("5. Za kraj programa");
         System.out.println("----------------------------------------");
 
         opcija = skener.nextInt();
@@ -99,6 +103,133 @@ public class Main
         }
     }
 
+    private void izmeniOblik()
+    {
+        System.out.print("Uneti ID oblika: ");
+        skener.nextLine(); // Zato sto se u Javi ucita i \n
+        String ID = skener.nextLine();
+
+        for(Oblik o : listaOblika)
+        {
+            if(ID.equals(o.vratiID()))
+            {
+                izmeniOblik(o);
+                return;
+            }
+        }
+    }
+
+    private void izmeniOblik(Oblik o)
+    {
+        if (o instanceof Kvadrat)
+        {
+            double aStaro = ((Kvadrat) o).vratiStranicu();
+            System.out.print("Trenutno je a=" + aStaro + ". Unesite novu vrednost: ");
+            double aNovo = skener.nextDouble();
+
+            if (((Kvadrat) o).postaviStranice(aNovo)) {
+                System.out.println("Stranica je uspesno postavljena");
+            }
+        }
+        else if (o instanceof Krug)
+        {
+            double rStaro = ((Krug) o).vratiPoluprecnik();
+            System.out.print("Trenutno je r=" + rStaro + ". Unesite novu vrednost: ");
+            double rNovo = skener.nextDouble();
+
+            if (((Krug) o).postaviPoluprecnik(rNovo))
+                System.out.println("Poluprecnik je uspesno postavljen");
+        }
+        else if (o instanceof Trougao)
+        {
+            double[] stranice = ((Trougao) o).vratiStranice();
+            int opcija = 0;
+
+            System.out.println("Uneti: ");
+            System.out.println("1. za izmenu stranice a: ");
+            System.out.println("2. za izmenu stranice b: ");
+            System.out.println("3. za izmenu stranice c: ");
+            System.out.println("Bilo koji drugi broj za kraj programa");
+
+            opcija = skener.nextInt();
+
+            switch (opcija)
+            {
+                case 1:
+                    System.out.print("Trenutno je a=" + stranice[0] + ". Unesite novu vrednost:");
+                    double aNovo = skener.nextDouble();
+
+                    if (((Trougao) o).postaviStranice(aNovo, stranice[1], stranice[2]))
+                        System.out.println("Stranica je uspesno postavljena");
+                    break;
+                case 2:
+                    System.out.print("Trenutno je b=" + stranice[1] + ". Unesite novu vrednost:");
+                    double bNovo = skener.nextDouble();
+
+                    if (((Trougao) o).postaviStranice(stranice[0], bNovo, stranice[2]))
+                        System.out.println("Stranica je uspesno postavljena");
+                    break;
+                case 3:
+                    System.out.print("Trenutno je c=" + stranice[2] + ". Unesite novu vrednost:");
+                    double cNovo = skener.nextDouble();
+
+                    if (((Trougao) o).postaviStranice(stranice[0], stranice[1], cNovo))
+                        System.out.println("Stranica je uspesno postavljena");
+                    break;
+                default:
+                    System.out.println("Izabrana opcija ne postoji.");
+            }
+        }
+        else
+        {
+            double[] stranice = ((Trapez) o).vratiStranice();
+            int opcija = 0;
+
+            System.out.println("Uneti: ");
+            System.out.println("1. za izmenu stranice a: ");
+            System.out.println("2. za izmenu stranice b: ");
+            System.out.println("3. za izmenu stranice c: ");
+            System.out.println("4. za izmenu stranice d: ");
+            System.out.println("Bilo koji drugi broj za kraj programa");
+
+            opcija = skener.nextInt();
+
+            switch (opcija)
+            {
+                case 1:
+                    System.out.print("Trenutno je a=" + stranice[0] + ". Unesite novu vrednost:");
+                    double aNovo = skener.nextDouble();
+
+                    if (((Trapez) o).postaviStranice(aNovo, stranice[1], stranice[2], stranice[3]))
+                        System.out.println("Stranica je uspesno postavljena");
+                    break;
+                case 2:
+                    System.out.print("Trenutno je b=" + stranice[1] + ". Unesite novu vrednost:");
+                    double bNovo = skener.nextDouble();
+
+                    if (((Trapez) o).postaviStranice(stranice[0], bNovo, stranice[2], stranice[3]))
+                        System.out.println("Stranica je uspesno postavljena");
+                    break;
+                case 3:
+                    System.out.print("Trenutno je c=" + stranice[2] + ". Unesite novu vrednost:");
+                    double cNovo = skener.nextDouble();
+
+                    if (((Trapez) o).postaviStranice(stranice[0], stranice[1], cNovo, stranice[3]))
+                        System.out.println("Stranica je uspesno postavljena");
+                    break;
+                case 4:
+                    System.out.print("Trenutno je d=" + stranice[3] + ". Unesite novu vrednost:");
+                    double dNovo = skener.nextDouble();
+
+                    if (((Trapez) o).postaviStranice(stranice[0], stranice[1], stranice[2], dNovo))
+                        System.out.println("Stranica je uspesno postavljena");
+                    break;
+                default:
+                    System.out.println("Izabrana opcija ne postoji.");
+            }
+        }
+    }
+
     private void obrisiOblik()
     {
         if(listaOblika.size() <= 0)
@@ -137,10 +268,13 @@ public class Main
             double obim = oblik.obim();
             double povrsina = oblik.povrsina();
 
-            System.out.print(oblik.vratiID() + " | ");
-            System.out.print(obim > 0 ? "O=" + obim + " | " : "GRESKA! Oblik nije validan" + " | ");
-            System.out.print(povrsina > 0 ? "P=" + povrsina + " | " : "GRESKA! Oblik nije validan");
-            System.out.println();
+            if(!(obim != -1 && povrsina != -1))
+            {
+                System.out.println(oblik.vratiID() + " nema ispravne dimenzije, pa obim i povrsina ne mogu biti izracunate.");
+                continue;
+            }
+
+            System.out.println(oblik.vratiID() + " | " + "O=" + obim + " | " + "P=" + povrsina);
         };
     }
 }

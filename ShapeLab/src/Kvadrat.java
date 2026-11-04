@@ -73,14 +73,23 @@ public class Kvadrat extends Oblik implements IIspisDetaljaOblika
 
     public double vratiStranicu()
     {
-        return a;
+        if(jeIspravan())
+            return a;
+        else
+            return -1;
     }
 
-    public void postaviStranice(double a)
+    public boolean postaviStranice(double a)
     {
         if(jeIspravan(a))
+        {
             this.a = a;
+            return true;
+        }
         else
+        {
             System.out.println("Greska! Stranica mora biti veca od 0.");
+            return false;
+        }
     }
 }

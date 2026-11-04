@@ -84,11 +84,12 @@ public class Trapez extends Oblik implements IIspisDetaljaOblika
         }
     }
 
-    public void postaviStranice(double a, double b, double c, double d)
+    public boolean postaviStranice(double a, double b, double c, double d)
     {
         if(!jeIspravan(a, b, c, d))
         {
             System.out.println("Unete stranice trapeza nisu ispravne.");
+            return false;
         }
         else
         {
@@ -96,12 +97,16 @@ public class Trapez extends Oblik implements IIspisDetaljaOblika
             this.b = b;
             this.c = c;
             this.d = d;
+            return true;
         }
     }
 
     public double[] vratiStranice()
     {
-        return new double[] {a, b, c, d};
+        if(jeIspravan())
+            return new double[] {a, b, c, d};
+        else
+            return null;
     }
 
 }

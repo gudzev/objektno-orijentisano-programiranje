@@ -77,17 +77,21 @@ public class Krug extends Oblik implements IIspisDetaljaOblika
 
     public double vratiPoluprecnik()
     {
-        return r;
+        if(jeIspravan())
+            return r;
+        else
+            return -1;
     }
 
-    public void postaviPoluprecnik(double r)
+    public boolean postaviPoluprecnik(double r)
     {
         if(!jeIspravan(r))
         {
             System.out.println("Greska! Poluprecnik mora biti veci od 0.");
-            return;
+            return false;
         }
 
         this.r = r;
+        return true;
     }
 }

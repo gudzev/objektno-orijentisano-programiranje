@@ -79,20 +79,25 @@ public class Trougao extends Oblik implements IIspisDetaljaOblika
 
     public double[] vratiStranice()
     {
-        return new double[] {a, b, c};
+        if(jeIspravan())
+            return new double[] {a, b, c};
+        else
+            return null;
     }
 
-    public void postaviStranice(double a, double b, double c)
+    public boolean postaviStranice(double a, double b, double c)
     {
         if(!jeIspravan(a, b, c))
         {
             System.out.println("Unete stranice trougla nisu validne.");
+            return false;
         }
         else
         {
             this.a = a;
             this.b = b;
             this.c = c;
+            return true;
         }
     }
 }
