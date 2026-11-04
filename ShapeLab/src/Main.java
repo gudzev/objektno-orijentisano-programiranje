@@ -105,6 +105,12 @@ public class Main
 
     private void izmeniOblik()
     {
+        if(listaOblika.size() <= 0)
+        {
+            System.out.println("Lista oblika je prazna.");
+            return;
+        }
+
         System.out.print("Uneti ID oblika: ");
         skener.nextLine(); // Zato sto se u Javi ucita i \n
         String ID = skener.nextLine();
